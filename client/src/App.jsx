@@ -10,6 +10,7 @@ import Contact from './pages/Contact'
 import Auth from './pages/Auth'
 import Sidebar from './components/Sidebar'
 
+
 const App = () => {
   const location = useLocation();
   const hideNavFooter = ['/login'];

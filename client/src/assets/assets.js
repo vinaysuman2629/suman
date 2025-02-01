@@ -3,6 +3,9 @@ import logo from './logo1.png';
 import suman from './suman.jpg'
 import vinay from './vinayport1.jpg'
 import homeinhand from './homeinhand.jpg'
+import landwithmoney from './landwithmoney.jpg'
+import flat2 from './flat2.avif'
+import house from './house.avif'
 
 export const assets = {
     logo_nav,
@@ -10,4 +13,7 @@ export const assets = {
     suman,
     vinay,
     homeinhand,
+    landwithmoney,
+    flat2,
+    house,
 }
