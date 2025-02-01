@@ -49,7 +49,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className='text-white text-xs mt-24 pt-2 border-t border-[#444]'>
+            <div className='text-white text-xs mt-16 pt-2 border-t border-[#444]'>
                 <p>© 2025 Real Estate Investments. All rights reserved.</p>
             </div>
         </footer>
