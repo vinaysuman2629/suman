@@ -7,10 +7,10 @@ const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
     return (
         <header className='fixed z-20 top-0 bg-gradient-to-r from-[#b6c307] to-[#00b4d8] text-gray-700'>
-            <div className='flex items-center justify-between h-16 w-screen p-1 md:px-5'>
-                <div className='flex items-center justify-center'>
+            <div className='flex items-center justify-between h-16 w-screen p-1 px-3 md:px-16'>
+                <Link to={'/'} className='flex items-center justify-center'>
                     <img src={assets.logo} alt="logo" className='size-12 rounded' />
-                </div>
+                </Link>
                 <div className='hidden md:block'>
                     <nav className='flex space-x-5 text-lg font-medium'>
                         <Link to={'/'} className='cursor-pointer'>Home</Link>
@@ -22,7 +22,7 @@ const Navbar = () => {
                 </div>
                 <div className='flex items-center gap-4'>
                     <div className='border-3 border-gray-700 bg-white size-10 rounded-full flex items-center justify-center font-bold cursor-pointer'>V</div>
-                    <button className='bg-[#b6c307] py-1 px-5 text-lg font-medium text-gray-700 rounded-full'><Link>Login</Link></button>
+                    <button className='bg-[#b6c307] py-1 px-5 text-lg font-medium text-gray-700 rounded-full'><Link to={'/login'}>Login</Link></button>
                     <div onClick={() => setShowMenu((showMenu) ? false : true)} className='md:hidden cursor-pointer'>
                         <Menu color='#364153' size={40} />
                     </div>
