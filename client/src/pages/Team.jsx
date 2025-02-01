@@ -3,7 +3,7 @@ import { assets } from '../assets/assets'
 
 const Team = () => {
   return (
-    <section id="team" className="py-12 md:py-24 px-8 mt-16 text-center bg-gradient-to-br from-[#f6fafb] to-[#ece9e9]">
+    <section className="py-12 md:py-24 px-8 mt-16 text-center bg-gradient-to-br from-[#f6fafb] to-[#ece9e9]">
       <h1 className="text-4xl font-bold text-[#0077b6] mb-2 uppercase">Meet Our Team</h1>
       <h2 className="text-xl font-medium text-[#0077b6] mb-10 uppercase">Our Founder and Engineer</h2>
 
