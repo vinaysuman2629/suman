@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { MapPin, Phone, Mail } from 'lucide-react'
+import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
 
 const Footer = () => {
     return (
@@ -41,7 +41,12 @@ const Footer = () => {
                 </div>
                 <div className='flex flex-col w-full items-center justify-start h-56'>
                     <h1 className='text-xl uppercase border-b-2 font-semibold border-orange-400 pb-1'>Follow Us</h1>
-                    
+                    <div className='flex items-center justify-around mt-4 w-1/2'>
+                        <a href=""><Facebook className='hover:text-orange-400' size={32} /></a>
+                        <a href=""><Twitter className='hover:text-orange-400' size={32} /></a>
+                        <a href=""><Linkedin className='hover:text-orange-400' size={32} /></a>
+                        <a href=""><Instagram className='hover:text-orange-400' size={32} /></a>
+                    </div>
                 </div>
             </div>
             <div className='text-white text-xs mt-24 pt-2 border-t border-[#444]'>

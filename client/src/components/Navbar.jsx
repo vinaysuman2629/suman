@@ -6,7 +6,7 @@ import { Menu } from 'lucide-react'
 const Navbar = () => {
     const [showMenu, setShowMenu] = useState(false);
     return (
-        <header className='fixed top-0 bg-gradient-to-r from-[#b6c307] to-[#00b4d8] text-gray-700'>
+        <header className='fixed z-20 top-0 bg-gradient-to-r from-[#b6c307] to-[#00b4d8] text-gray-700'>
             <div className='flex items-center justify-between h-16 w-screen p-1 md:px-5'>
                 <div className='flex items-center justify-center'>
                     <img src={assets.logo} alt="logo" className='size-12 rounded' />
@@ -26,7 +26,7 @@ const Navbar = () => {
                     <div onClick={() => setShowMenu((showMenu) ? false : true)} className='md:hidden cursor-pointer'>
                         <Menu color='#364153' size={40} />
                     </div>
-                    <div className={`absolute top-16 right-0 w-[35%] ${showMenu ? 'block' : 'hidden'}`}>
+                    <div className={`absolute z-20 top-16 right-0 w-[35%] ${showMenu ? 'block' : 'hidden'}`}>
                         <div className='flex flex-col gap-2 items-center justify-center bg-gradient-to-tr from-[#b6c307] to-[#00b4d8] text-base font-medium rounded-br-3xl rounded-tl-3xl p-5'>
                             <Link onClick={() => setShowMenu(false)} to={'/'}>Home</Link>
                             <Link onClick={() => setShowMenu(false)} to={'/about'}>About</Link>
