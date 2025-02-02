@@ -19,21 +19,21 @@ const Footer = () => {
                 <div className='flex flex-col w-full items-center justify-start h-56'>
                     <h1 className='text-xl uppercase border-b-2 font-semibold border-orange-400 pb-1'>Contact Info</h1>
                     <div className='flex flex-col gap-2.5 mt-4 font-medium text-sm items-center justify-center'>
-                        <div className="flex items-start justify-center gap-2 w-full">
+                        <div className="flex items-start justify-center w-[80%]">
                             <MapPin size={18} />
-                            <p className="w-[90%] leading-tight">
+                            <p className="w-[85%] leading-tight text-center">
                                 Bhagirath Bhawan 1st Floor, NH2 Barkattha Road, Tuio, Hazaribagh, Jharkhand, India 825323
                             </p>
                         </div>
-                        <div className="flex items-start justify-center gap-2 w-full">
+                        <div className="flex items-start justify-center gap-2 w-[80%]">
                             <Phone size={18} />
-                            <p className="w-[90%] leading-tight">
+                            <p className="leading-tight text-center">
                                 +91 7543070095
                             </p>
                         </div>
-                        <div className="flex items-start justify-center gap-2 w-full">
+                        <div className="flex items-start justify-center gap-2 w-[80%]">
                             <Mail size={18} />
-                            <p className="w-[90%] leading-tight">
+                            <p className="leading-tight text-center">
                                 infothemsukfunds@gmail.com
                             </p>
                         </div>

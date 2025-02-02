@@ -9,6 +9,8 @@ import Review from './pages/Review'
 import Contact from './pages/Contact'
 import Auth from './pages/Auth'
 import Sidebar from './components/Sidebar'
+import ScrollToTop from './components/ScrollToTop'
+import MyTransaction from './pages/MyTransaction'
 
 
 const App = () => {
@@ -19,6 +21,7 @@ const App = () => {
     <div>
       {!hideNavFooter.includes(location.pathname) && <Navbar />}
       {!hideNavFooter.includes(location.pathname) && <Sidebar />}
+      <ScrollToTop />
       <Routes>
         <Route path='/login' element={<Auth />} />
         <Route path='/' element={<Home />} />
@@ -26,6 +29,7 @@ const App = () => {
         <Route path='/team' element={<Team />} />
         <Route path='/review' element={<Review />} />
         <Route path='/contact' element={<Contact />} />
+        <Route path='/my-transaction' element={<MyTransaction />} />
       </Routes>
       {!hideNavFooter.includes(location.pathname) && <Footer />}
     </div>
