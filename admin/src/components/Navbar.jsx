@@ -12,7 +12,7 @@ const Navbar = ({ setToken }) => {
     <div className='flex bg-gray-200 shadow-lg items-center py-2 px-[4%] justify-between'>
       <Link to={`/`} className='w-80 flex flex-col items-start justify-center'>
         {/* <img src={assets.logo1} alt="" className='size-16' /> */}
-        <div className='flex items-center justify-center'>
+        <div className='flex items-center justify-center font-semibold'>
           <h1 className='uppercase text-2xl sirin-stencil-regular'>The Musk Fund</h1>
         </div>
         <div className='flex items-center justify-start'>
