@@ -6,6 +6,7 @@ import homeinhand from './homeinhand.jpg'
 import landwithmoney from './landwithmoney.jpg'
 import flat2 from './flat2.avif'
 import house from './house.avif'
+import Logomsuk from './logomsuk.png'
 
 export const assets = {
     logo_nav,
@@ -16,4 +17,5 @@ export const assets = {
     landwithmoney,
     flat2,
     house,
+    Logomsuk,
 }

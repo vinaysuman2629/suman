@@ -29,12 +29,9 @@ const Navbar = () => {
     return (
         <header className={`fixed z-20 top-0 left-1/2 w-full transform -translate-x-1/2 bg-gradient-to-r from-[#b6c307] to-[#00b4d8] text-gray-700 transition-all duration-300 `}>
             <div className='flex items-center justify-between h-16 px-5 md:px-20'>
-                <Link to={`/`} className='w-60 flex items-center justify-start'>
-                    <h1 className='uppercase text-2xl font-semibold'>The Musk Fund</h1>
+                <Link to={'/'} className='flex items-center justify-center'>
+                    <img src={assets.Logomsuk} alt="logo" className='w-12 h-12 rounded-full' />
                 </Link>
-                {/* <Link to={'/'} className='flex items-center justify-center'>
-                    <img src={assets.logo} alt="logo" className='w-12 h-12 rounded' />
-                </Link> */}
                 <div className='hidden md:block'>
                     <nav className='flex space-x-5 text-lg font-medium'>
                         {[
