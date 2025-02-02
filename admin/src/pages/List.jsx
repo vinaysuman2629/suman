@@ -2,10 +2,12 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { backendUrl, currency } from "../App";
 import { toast } from "react-toastify";
-import { Trash2 } from 'lucide-react'
+import { Trash2 } from "lucide-react";
+import { Loader2 } from "lucide-react"; // Import the loader component for spinner
 
 const List = ({ token }) => {
   const [list, setList] = useState([]);
+  const [loadingId, setLoadingId] = useState(null); // To track the id of the transaction being deleted
 
   const fetchList = async () => {
     try {
@@ -20,7 +22,9 @@ const List = ({ token }) => {
       toast.error(error.message);
     }
   };
+
   const removeTransaction = async (id) => {
+    setLoadingId(id); // Set the loading state to the current id
     try {
       const response = await axios.post(
         backendUrl + "/api/transaction/remove",
@@ -37,12 +41,15 @@ const List = ({ token }) => {
     } catch (error) {
       console.log(error);
       toast.error(error.message);
+    } finally {
+      setLoadingId(null); // Reset loading state
     }
   };
 
   useEffect(() => {
     fetchList();
   }, []);
+
   return (
     <>
       <p className="mb-2">All Transactions List</p>
@@ -84,7 +91,11 @@ const List = ({ token }) => {
               onClick={() => removeTransaction(item._id)}
               className="flex justify-end md:justify-center cursor-pointer text-lg"
             >
-              <Trash2 size={24} />
+              {loadingId === item._id ? (
+                <Loader2 className="animate-spin text-gray-500" size={24} />
+              ) : (
+                <Trash2 size={24} />
+              )}
             </p>
           </div>
         ))}

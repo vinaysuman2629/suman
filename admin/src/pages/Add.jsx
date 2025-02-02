@@ -2,15 +2,18 @@ import axios from "axios";
 import React, { useState } from "react";
 import { backendUrl } from "../App";
 import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react"; // Importing the loader component for spinner
 
 const Add = ({ token }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [amount, setAmount] = useState("");
   const [profit, setProfit] = useState("");
+  const [loading, setLoading] = useState(false); // State to track the loading status
 
   const onSubmitHandler = async (e) => {
     e.preventDefault();
+    setLoading(true); // Set loading to true when submitting
 
     try {
       const formData = {
@@ -43,8 +46,11 @@ const Add = ({ token }) => {
     } catch (error) {
       console.log(error);
       toast.error(error.message);
+    } finally {
+      setLoading(false); // Reset loading after the API call
     }
   };
+
   return (
     <form
       onSubmit={onSubmitHandler}
@@ -97,8 +103,18 @@ const Add = ({ token }) => {
         </div>
       </div>
       <div className="w-full flex items-center justify-end">
-        <button type="submit" className="w-28 py-3 mt-4 bg-yellow-500 hover:bg-yellow-600 text-white">
-          ADD
+        <button
+          type="submit"
+          className="w-28 py-3 mt-4 bg-yellow-500 hover:bg-yellow-600 text-white"
+          disabled={loading} // Disable button when loading
+        >
+          {loading ? (
+            <div className="flex justify-center items-center">
+              <Loader2 className="animate-spin text-white" size={24} />
+            </div>
+          ) : (
+            "ADD"
+          )}
         </button>
       </div>
     </form>
