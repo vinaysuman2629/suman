@@ -11,7 +11,10 @@ import Auth from './pages/Auth'
 import Sidebar from './components/Sidebar'
 import ScrollToTop from './components/ScrollToTop'
 import MyTransaction from './pages/MyTransaction'
+import { ToastContainer, toast } from "react-toastify";
 
+export const backendUrl = import.meta.env.VITE_BACKEND_URL;
+export const currency = "₹";
 
 const App = () => {
   const location = useLocation();
@@ -22,6 +25,7 @@ const App = () => {
       {!hideNavFooter.includes(location.pathname) && <Navbar />}
       {!hideNavFooter.includes(location.pathname) && <Sidebar />}
       <ScrollToTop />
+      <ToastContainer />
       <Routes>
         <Route path='/login' element={<Auth />} />
         <Route path='/' element={<Home />} />
