@@ -97,7 +97,7 @@ const Add = ({ token }) => {
         </div>
       </div>
       <div className="w-full flex items-center justify-end">
-        <button type="submit" className="w-28 py-3 mt-4 bg-black text-white">
+        <button type="submit" className="w-28 py-3 mt-4 bg-yellow-500 hover:bg-yellow-600 text-white">
           ADD
         </button>
       </div>

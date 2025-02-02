@@ -99,4 +99,27 @@ const adminLogin = async (req, res) => {
   }
 };
 
-export { loginUser, registerUser, adminLogin };
+const userDetail = async (req, res) => {
+  try {
+    const token = req.header('Authorization').replace('Bearer ', '');
+    if (!token) {
+      return res.status(400).json({ success: false, message: 'Token is required' });
+    }
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const userId = decoded.id;
+
+    const user = await userModel.findById(userId);
+    if (!user) {
+      return res.status(404).json({ success: false, message: 'User not found' });
+    }
+
+    const { password, ...userDetails } = user.toObject();
+    res.json({ success: true, user: userDetails });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+};
+
+export { loginUser, registerUser, adminLogin, userDetail };

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { backendUrl, currency } from "../App";
 import { toast } from "react-toastify";
+import UserCard from "../components/UserCard";
 
 const MyTransaction = ({ token }) => {
   const [list, setList] = useState([]);
@@ -13,7 +14,7 @@ const MyTransaction = ({ token }) => {
   }, [token]);
 
   const fetchList = async () => {
-    setLoading(true);
+    setLoading(true); ``
     try {
       if (!currentToken) return;
 
@@ -46,7 +47,8 @@ const MyTransaction = ({ token }) => {
 
   return (
     <div className="min-h-screen mt-16 px-5 md:px-10 bg-gradient-to-tr from-white via-gray-100 to-gray-300">
-      <p className="mb-4 text-[#00b4d8] text-3xl text-center font-bold">Your Transaction History</p>
+      <UserCard/>
+      <p className=" my-5 text-[#00b4d8] text-3xl text-center font-bold">Your Transaction History</p>
       <div className="flex flex-col gap-2">
         <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] items-center py-1 px-5 border bg-[#00b4d8]/30 text-gray-700 rounded-full text-xs md:text-base font-medium">
           <b>Amount</b>
@@ -72,7 +74,7 @@ const MyTransaction = ({ token }) => {
         {!loading &&
           list.map((item, index) => (
             <div key={index} className="block">
-              <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] items-center gap-4 py-1 px-5 rounded-full border border-gray-300 text-[8px] md:text-sm">
+              <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr] items-center py-1 px-5 rounded-full border border-gray-300 text-[8px] md:text-sm">
                 <p className="text-gray-700">{currency}{item.amount}</p>
                 <p className="text-gray-700">{currency}{item.profit}</p>
                 <p className="text-gray-700">{currency}{item.total}</p>

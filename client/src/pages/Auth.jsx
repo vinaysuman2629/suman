@@ -2,18 +2,22 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { transContext } from "../context/transContext";
+import { Loader2 } from "lucide-react"; 
 
 const Auth = () => {
-    const [isLogin, setIsLogin] = useState(true); // ✅ Use boolean
+    const [isLogin, setIsLogin] = useState(true);
     const { token, setToken, navigate, backendUrl } = useContext(transContext);
 
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
-    const [password, setPassword] = useState(""); // ✅ Typo fixed (setPasword → setPassword)
+    const [password, setPassword] = useState("");
     const [email, setEmail] = useState("");
+    const [loading, setLoading] = useState(false); // Loading state for the button
 
     const onSubmitHandler = async (event) => {
         event.preventDefault();
+        setLoading(true); // Set loading to true when the form is submitted
+
         try {
             const url = isLogin ? "/api/user/login" : "/api/user/register";
             const payload = isLogin ? { email, password } : { name, phone, email, password };
@@ -30,14 +34,16 @@ const Auth = () => {
         } catch (error) {
             console.error(error);
             toast.error(error.message);
+        } finally {
+            setLoading(false); // Reset loading state after API call
         }
     };
 
-    const ToggleForm = () => setIsLogin((prev) => !prev); // ✅ Clean toggle function
+    const ToggleForm = () => setIsLogin((prev) => !prev);
 
     useEffect(() => {
         if (token) navigate("/");
-    }, [token, navigate]); // ✅ Add `navigate` to dependencies
+    }, [token, navigate]);
 
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-100">
@@ -97,14 +103,21 @@ const Auth = () => {
                     <button
                         type="submit"
                         className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg transition"
+                        disabled={loading} // Disable the button when loading
                     >
-                        {isLogin ? "Login" : "Register"}
+                        {loading ? (
+                            <div className="flex justify-center items-center">
+                                <Loader2 className="animate-spin text-white" size={24} />
+                            </div>
+                        ) : (
+                            isLogin ? "Login" : "Register"
+                        )}
                     </button>
                 </form>
                 <p className="text-center mt-4 text-sm">
                     {isLogin ? "Don't have an account?" : "Already have an account?"}
                     <button
-                        onClick={ToggleForm} // ✅ Corrected function call
+                        onClick={ToggleForm}
                         className="text-yellow-600 font-bold ml-1"
                     >
                         {isLogin ? "Register Here" : "Login Here"}
