@@ -27,8 +27,7 @@ const Navbar = () => {
     }, []);
 
     return (
-        <header className={`fixed z-20 top-0 left-1/2 w-screen transform -translate-x-1/2 bg-gray-100 text-gray-700 transition-all duration-300 
-            ${scrolled ? 'md:rounded-3xl shadow-lg shadow-black/60 md:mt-4 md:w-[90%] border border-gray-300' : 'md:w-full'}`}>
+        <header className={`fixed z-20 top-0 left-1/2 w-full transform -translate-x-1/2 bg-gradient-to-r from-[#b6c307] to-[#00b4d8] text-gray-700 transition-all duration-300 `}>
             <div className='flex items-center justify-between h-16 px-5 md:px-20'>
                 <Link to={`/`} className='w-60 flex items-center justify-start'>
                     <h1 className='uppercase text-2xl font-semibold'>The Musk Fund</h1>

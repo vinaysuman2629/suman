@@ -10,10 +10,9 @@ const Home = () => {
   const statsRef = useRef(null);
   const isInView = useInView(statsRef, { once: true });
   return (
-    <div>      
-      <div className='abolute hidden md:block w-screen h-16 absolute -top-0 bg-black/40'></div>
-      <section className="hero bg-black/40 h-full md:h-screen text-white py-16 md:py-20 mt-16 relative overflow-hidden flex flex-col justify-center items-center">      
-        <img src={assets.landwithmoney} className="fixed w-screen -z-1 scale-150 md:scale-100" alt="" />
+    <div>
+      <section className="hero bg-black/40 h-full md:h-screen text-white py-20 mt-16 relative overflow-hidden flex flex-col justify-center items-center">
+        <img src={assets.landwithmoney} className="fixed md:h-screen w-screen -z-1 scale-[175%] md:scale-100" alt="" />
         <div className="flex flex-col items-center justify-around mx-auto text-center">
           <h1 className="text-4xl md:text-6xl font-bold" style={{ textShadow: '2px 2px 6px rgba(0, 0, 0, 0.5)' }}>
             Invest in Property, Secure Your Future
