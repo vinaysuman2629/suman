@@ -48,15 +48,15 @@ const Add = ({ token }) => {
   return (
     <form
       onSubmit={onSubmitHandler}
-      className="flex flex-col w-full max-h-[85vh] overflow-scroll items-start gap-3"
+      className="flex flex-col w-full h-[85vh] overflow-scroll items-start gap-3"
     >
-      <div>
+      <div className="w-full">
         <div className="w-full">
           <p className="mb-2">Name</p>
           <input
             onChange={(e) => setName(e.target.value)}
             value={name}
-            className="w-full max-w-[500px] px-3 py-2"
+            className="w-full px-3 py-2"
             type="text"
             placeholder="Type here"
             required
@@ -67,7 +67,7 @@ const Add = ({ token }) => {
           <input
             onChange={(e) => setEmail(e.target.value)}
             value={email}
-            className="w-full max-w-[500px] px-3 py-2"
+            className="w-full px-3 py-2"
             type="text"
             placeholder="Type here"
             required
@@ -78,7 +78,7 @@ const Add = ({ token }) => {
           <input
             onChange={(e) => setAmount(e.target.value)}
             value={amount}
-            className="w-full max-w-[500px] px-3 py-2"
+            className="w-full px-3 py-2"
             type="Number"
             placeholder="100"
             required
@@ -89,16 +89,18 @@ const Add = ({ token }) => {
           <input
             onChange={(e) => setProfit(e.target.value)}
             value={profit}
-            className="w-full max-w-[500px] px-3 py-2"
+            className="w-full px-3 py-2"
             type="Number"
             placeholder="25"
             required
           />
         </div>
       </div>
-      <button type="submit" className="w-28 py-3 mt-4 bg-black text-white">
-        ADD
-      </button>
+      <div className="w-full flex items-center justify-end">
+        <button type="submit" className="w-28 py-3 mt-4 bg-black text-white">
+          ADD
+        </button>
+      </div>
     </form>
   );
 };
