@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+select,
+input,
+textarea {
+    border: 1px solid #c2c2c2;
+    outline-color: #C586A5;
+    border-radius: 4px;
+}
+
+.active {
+    @apply bg-gradient-to-r from-[#b6c307] to-[#00b4d8]
+}
+
+::-webkit-scrollbar {
+    @apply hidden;
+}
