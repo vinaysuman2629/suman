@@ -115,7 +115,7 @@ const Auth = () => {
                     </button>
                 </form>
                 {
-                    isLogin && <p className="text-center mt-4 text-sm">Forgot Password? <span className="text-yellow-600 font-bold ml-1 cursor-pointer">Reset</span></p>
+                    isLogin && <p className="text-center mt-4 text-sm">Forgot Password? <span onClick={()=>navigate('/reset-password')} className="text-yellow-600 font-bold ml-1 cursor-pointer">Reset</span></p>
                 }
                 <p className="text-center mt-4 text-sm">
                     {isLogin ? "Don't have an account?" : "Already have an account?"}
