@@ -1,4 +1,7 @@
 import React, { useState } from "react";
+import { backendUrl } from "../App";
+import axios from "axios";
+import { toast } from "react-toastify";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -15,9 +18,22 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+
+    try {
+      const response = await axios.post(`${backendUrl}/send-email`, formData);
+  
+      if (response.data.success) {
+        toast.success("Mail Sent Successfully")
+        setFormData({ name: "", email: "", message: "" }); // Reset form
+      } else {
+        toast.error("Failed to sent mail")
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "An error occurred");
+    }
   };
 
   return (
