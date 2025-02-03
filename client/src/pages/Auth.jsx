@@ -102,7 +102,7 @@ const Auth = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg transition"
+                        className="w-full bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded-lg transition cursor-pointer"
                         disabled={loading} // Disable the button when loading
                     >
                         {loading ? (
@@ -121,7 +121,7 @@ const Auth = () => {
                     {isLogin ? "Don't have an account?" : "Already have an account?"}
                     <button
                         onClick={ToggleForm}
-                        className="text-yellow-600 font-bold ml-1"
+                        className="text-yellow-600 font-bold ml-1 cursor-pointer"
                     >
                         {isLogin ? "Register Here" : "Login Here"}
                     </button>
