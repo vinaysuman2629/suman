@@ -4,14 +4,19 @@ import userModel from "../models/userModel.js";
 // function for add Transaction
 const addTransaction = async (req, res) => {
   try {
-    const { name, email, amount, profit } = req.body;
+    const { name, email, description, withdrawl, deposit, profit, loss } =
+      req.body;
 
     const transactionData = {
       name,
       email,
-      amount: Number(amount),
+      description,
+      withdrawl: Number(withdrawl),
+      deposit: Number(deposit),
       profit: Number(profit),
-      total: Number(amount) + Number(profit),
+      loss: Number(loss),
+      total:
+        Number(deposit) + Number(profit) - Number(withdrawl) - Number(loss),
       date: Date.now(),
     };
 
@@ -42,10 +47,9 @@ const listTransaction = async (req, res) => {
 // function for list user Transaction
 const listUserTransaction = async (req, res) => {
   try {
-  
-    const user = await userModel.find({_id: req.body.userId});
+    const user = await userModel.find({ _id: req.body.userId });
 
-    const transactions = await transactionModel.find({email: user[0].email})
+    const transactions = await transactionModel.find({ email: user[0].email });
 
     res.json({ success: true, transactions });
   } catch (error) {
@@ -65,4 +69,34 @@ const removeTransaction = async (req, res) => {
   }
 };
 
-export { addTransaction, listTransaction, listUserTransaction, removeTransaction };
+// function for update transaction
+const updateTransaction = async (req, res) => {
+  try {
+    const { id, name, email, description, withdrawl, deposit, profit, loss } =
+      req.body;
+    await transactionModel.findByIdAndUpdate(id, {
+      name,
+      email,
+      description,
+      withdrawl,
+      deposit,
+      profit,
+      loss,
+    });
+
+    // console.log( name, email, description, withdrawl, deposit, profit, loss)
+
+    res.json({ success: true, message: "Transaction Updated" });
+  } catch (error) {
+    console.log(error);
+    res.json({ success: false, message: error.message });
+  }
+};
+
+export {
+  addTransaction,
+  listTransaction,
+  listUserTransaction,
+  removeTransaction,
+  updateTransaction,
+};

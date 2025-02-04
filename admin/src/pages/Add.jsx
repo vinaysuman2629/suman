@@ -7,8 +7,11 @@ import { Loader2 } from "lucide-react"; // Importing the loader component for sp
 const Add = ({ token }) => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [amount, setAmount] = useState("");
+  const [description, setDescription] = useState("");
+  const [withdrawl, setWithdrawl] = useState("");
+  const [deposit, setDeposit] = useState("");
   const [profit, setProfit] = useState("");
+  const [loss, setLoss] = useState("");
   const [loading, setLoading] = useState(false); // State to track the loading status
 
   const onSubmitHandler = async (e) => {
@@ -19,8 +22,11 @@ const Add = ({ token }) => {
       const formData = {
         name,
         email,
-        amount: Number(amount),
+        description,
+        withdrawl: Number(withdrawl),
+        deposit: Number(deposit),
         profit: Number(profit),
+        loss: Number(loss),
       };
 
       const response = await axios.post(
@@ -38,8 +44,11 @@ const Add = ({ token }) => {
         toast.success(response.data.message);
         setName("");
         setEmail("");
-        setAmount("");
+        setDescription("");
+        setWithdrawl("");
+        setDeposit("");
         setProfit("");
+        setLoss("");
       } else {
         toast.error(response.data.message);
       }
@@ -80,10 +89,32 @@ const Add = ({ token }) => {
           />
         </div>
         <div className="w-full">
-          <p className="mb-2">Amount</p>
+          <p className="mb-2">Description</p>
           <input
-            onChange={(e) => setAmount(e.target.value)}
-            value={amount}
+            onChange={(e) => setDescription(e.target.value)}
+            value={description}
+            className="w-full px-3 py-2"
+            type="text"
+            placeholder="Type here"
+            required
+          />
+        </div>
+        <div className="w-full">
+          <p className="mb-2">Withdrawl</p>
+          <input
+            onChange={(e) => setWithdrawl(e.target.value)}
+            value={withdrawl}
+            className="w-full px-3 py-2"
+            type="Number"
+            placeholder="100"
+            required
+          />
+        </div>
+        <div className="w-full">
+          <p className="mb-2">Deposit</p>
+          <input
+            onChange={(e) => setDeposit(e.target.value)}
+            value={deposit}
             className="w-full px-3 py-2"
             type="Number"
             placeholder="100"
@@ -95,6 +126,17 @@ const Add = ({ token }) => {
           <input
             onChange={(e) => setProfit(e.target.value)}
             value={profit}
+            className="w-full px-3 py-2"
+            type="Number"
+            placeholder="25"
+            required
+          />
+        </div>
+        <div className="w-full">
+          <p className="mb-2">Loss</p>
+          <input
+            onChange={(e) => setLoss(e.target.value)}
+            value={loss}
             className="w-full px-3 py-2"
             type="Number"
             placeholder="25"
