@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { backendUrl } from "../App";
+import axios from "axios";
+import { toast } from "react-toastify";
+import { Loader2 } from "lucide-react"; // Import the Loader2 component from lucide-react
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -6,6 +10,9 @@ const Contact = () => {
     email: "",
     message: ""
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false); // State to manage loader
+  const [isSuccess, setIsSuccess] = useState(null); // Track submission success or failure
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -15,9 +22,30 @@ const Contact = () => {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(formData);
+
+    setIsSubmitting(true); // Start loading
+    setIsSuccess(null); // Reset success status on new submission
+
+    try {
+      const response = await axios.post(`${backendUrl}/send-email`, formData);
+
+      if (response.data.success) {
+        toast.success("Message Sent Successfully");
+        setFormData({ name: "", email: "", message: "" }); // Reset form
+        setIsSuccess(true); // Mark success
+      } else {
+        toast.error("Failed to send Message");
+        setIsSuccess(false); // Mark failure
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "An error occurred");
+      setIsSuccess(false); // Mark failure on error
+    } finally {
+      setIsSubmitting(false); // Stop loading
+    }
   };
 
   return (
@@ -72,8 +100,17 @@ const Contact = () => {
           <button
             type="submit"
             className="w-full py-4 bg-orange-400 text-white text-lg rounded-full transition-colors duration-300 ease-in-out hover:bg-orange-500 cursor-pointer"
+            disabled={isSubmitting || isSuccess === true} // Disable button during loading or after success
           >
-            Send Message
+            {isSubmitting ? (
+              <div className="flex justify-center">
+                <Loader2 className="w-6 h-6 animate-spin" />
+              </div>
+            ) : isSuccess === false ? (
+              "Retry Sending"
+            ) : (
+              "Send Message"
+            )}
           </button>
         </form>
       </div>
