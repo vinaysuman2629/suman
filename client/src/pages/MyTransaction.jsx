@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { backendUrl, currency } from "../App";
 import { toast } from "react-toastify";
 import UserCard from "../components/UserCard";
+import { transContext } from "../context/transContext";
 
 const MyTransaction = ({ token }) => {
+  const { navigate } = useContext(transContext)
   const [list, setList] = useState([]);
   const [currentToken, setCurrentToken] = useState(
     token || localStorage.getItem("token")
@@ -51,6 +53,10 @@ const MyTransaction = ({ token }) => {
   return (
     <div className="min-h-screen mt-16 px-5 md:px-10 bg-gradient-to-tr from-white via-gray-100 to-gray-300">
       <UserCard />
+      <div className="flex items-center justify-center gap-5">
+        <button onClick={() => navigate('/contact')} className="w-32 md:w-40 py-3 mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm md:text-base cursor-pointer">Request Deposit</button>
+        <button onClick={() => navigate('/contact')} className="w-32 md:w-40 py-3 mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm md:text-base cursor-pointer">Request Withdrawal</button>
+      </div>
       <p className=" my-5 text-[#00b4d8] text-3xl text-center font-bold">
         Your Transaction History
       </p>
