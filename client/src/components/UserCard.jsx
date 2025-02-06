@@ -72,17 +72,17 @@ const UserCard = ({ token }) => {
                 <div className="flex justify-center items-center py-6">
                     <div className="bg-white shadow-lg rounded-lg w-full max-w-xl p-6">
                         <div className="text-center">
-                            <h1 className="text-4xl font-bold text-transparent bg-gradient-to-r from-blue-600 to-teal-400 bg-clip-text">{user.name}</h1>
-                            <p className="text-gray-600 text-lg">{user.email}</p>
+                            <h1 className="text-2xl md:text-4xl font-bold text-transparent bg-gradient-to-r from-blue-600 to-teal-400 bg-clip-text">{user.name}</h1>
+                            <p className="text-xs text-gray-600 md:text-lg">{user.email}</p>
                         </div>
-                        <div className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="mt-6 grid grid-cols-2 gap-4">
                             <div className="flex flex-col items-center p-4 border border-gray-300 rounded-lg shadow-sm bg-gray-50">
-                                <h2 className="font-medium text-gray-700">Phone</h2>
-                                <p className="text-gray-600">{user.phone || "Not provided"}</p>
+                                <h2 className="text-sm md:text-lg font-medium text-gray-700">Phone</h2>
+                                <p className="text-xs md:text-base text-gray-600">{user.phone || "Not provided"}</p>
                             </div>
                             <div className="flex flex-col items-center p-4 border border-gray-300 rounded-lg shadow-sm bg-gray-50">
-                                <h2 className="font-medium text-gray-700">Joined</h2>
-                                <p className="text-gray-600">{new Date(user.createdAt).toLocaleDateString()}</p>
+                                <h2 className="text-sm md:text-lg font-medium text-gray-700">Joined</h2>
+                                <p className="text-xs md:text-base text-gray-600">{new Date(user.createdAt).toLocaleDateString()}</p>
                             </div>
                         </div>
                     </div>

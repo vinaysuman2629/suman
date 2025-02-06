@@ -26,8 +26,10 @@ const App = () => {
   const shouldHideNavFooter = hideNavFooterPaths.includes(location.pathname) || isChangePasswordPage;
   return (
     <div>
-      {!shouldHideNavFooter && <Navbar />}
-      {!shouldHideNavFooter && <Sidebar />}
+      {/* {!shouldHideNavFooter && <Navbar />}
+      {!shouldHideNavFooter && <Sidebar />} */}
+      <Navbar/>
+      <Sidebar/>
       <ScrollToTop />
       <ToastContainer />
       <Routes>
@@ -41,7 +43,8 @@ const App = () => {
         <Route path='/contact' element={<Contact />} />
         <Route path='/my-transaction' element={<MyTransaction />} />
       </Routes>
-      {!shouldHideNavFooter && <Footer />}
+      {/* {!shouldHideNavFooter && <Footer />} */}
+      <Footer/>
     </div>
   )
 }
