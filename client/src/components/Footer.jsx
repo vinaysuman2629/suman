@@ -1,59 +1,60 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin } from 'lucide-react'
+import React from "react";
+import { Link } from "react-router-dom";
+import { MapPin, Phone, Mail, Facebook, Twitter, Instagram, Linkedin } from "lucide-react";
 
 const Footer = () => {
     return (
-        <footer className='bg-[#333] flex flex-col items-start justify-around py-16 px-5 md:px-20 text-white'>
-            <div className='grid grid-cols-1 md:grid-cols-[1fr_1fr_1fr] gap-3 items-center justify-between w-full'>
-                <div className='flex flex-col w-full items-center justify-start h-56'>
-                    <h1 className='text-xl uppercase border-b-2 font-semibold border-orange-400 pb-1'>Quick Links</h1>
-                    <div className='flex flex-col gap-1.5 mt-4 font-medium text-sm items-center justify-center'>
-                        <Link>Home</Link>
-                        <Link>About</Link>
-                        <Link>Our Team</Link>
-                        <Link>Reviews</Link>
-                        <Link>Contact</Link>
+        <footer className="bg-[#222] text-white py-16 px-6 md:px-20">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-16">
+                {/* Quick Links */}
+                <div className="flex flex-col items-center md:items-start">
+                    <h1 className="text-lg font-semibold border-b-2 border-orange-500 pb-2 mb-4 uppercase">Quick Links</h1>
+                    <div className="flex flex-col gap-2 text-sm">
+                        <Link to="/" className="hover:text-orange-400 transition">Home</Link>
+                        <Link to="/about" className="hover:text-orange-400 transition">About</Link>
+                        <Link to="/team" className="hover:text-orange-400 transition">Our Team</Link>
+                        <Link to="/reviews" className="hover:text-orange-400 transition">Reviews</Link>
+                        <Link to="/contact" className="hover:text-orange-400 transition">Contact</Link>
                     </div>
                 </div>
-                <div className='flex flex-col w-full items-center justify-start h-56'>
-                    <h1 className='text-xl uppercase border-b-2 font-semibold border-orange-400 pb-1'>Contact Info</h1>
-                    <div className='flex flex-col gap-2.5 mt-4 font-medium text-sm items-center justify-center'>
-                        <div className="flex items-start justify-center w-[80%]">
-                            <MapPin size={18} />
-                            <p className="w-[85%] leading-tight text-center">
-                                Bhagirath Bhawan 1st Floor, NH2 Barkattha Road, Tuio, Hazaribagh, Jharkhand, India 825323
-                            </p>
+
+                {/* Contact Info */}
+                <div className="flex flex-col items-center md:items-start">
+                    <h1 className="text-lg font-semibold border-b-2 border-orange-500 pb-2 mb-4 uppercase">Contact Info</h1>
+                    <div className="flex flex-col gap-3 text-sm">
+                        <div className="flex items-start gap-3">
+                            <MapPin size={18} className="text-orange-400" />
+                            <p className="max-w-xs">Bhagirath Bhawan 1st Floor, NH2 Barkattha Road, Tuio, Hazaribagh, Jharkhand, India 825323</p>
                         </div>
-                        <div className="flex items-start justify-center gap-2 w-[80%]">
-                            <Phone size={18} />
-                            <p className="leading-tight text-center">
-                                +91 7543070095
-                            </p>
+                        <div className="flex items-center gap-3">
+                            <Phone size={18} className="text-orange-400" />
+                            <p>+91 7543070095</p>
                         </div>
-                        <div className="flex items-start justify-center gap-2 w-[80%]">
-                            <Mail size={18} />
-                            <p className="leading-tight text-center">
-                                infothemsukfunds@gmail.com
-                            </p>
+                        <div className="flex items-center gap-3">
+                            <Mail size={18} className="text-orange-400" />
+                            <p>infothemsukfunds@gmail.com</p>
                         </div>
                     </div>
                 </div>
-                <div className='flex flex-col w-full items-center justify-start h-56'>
-                    <h1 className='text-xl uppercase border-b-2 font-semibold border-orange-400 pb-1'>Follow Us</h1>
-                    <div className='flex items-center justify-around mt-4 w-1/2'>
-                        <a href=""><Facebook className='hover:text-orange-400' size={32} /></a>
-                        <a href=""><Twitter className='hover:text-orange-400' size={32} /></a>
-                        <a href=""><Linkedin className='hover:text-orange-400' size={32} /></a>
-                        <a href=""><Instagram className='hover:text-orange-400' size={32} /></a>
+
+                {/* Social Media */}
+                <div className="flex flex-col items-center md:items-start">
+                    <h1 className="text-lg font-semibold border-b-2 border-orange-500 pb-2 mb-4 uppercase">Follow Us</h1>
+                    <div className="flex gap-4">
+                        <a href="#" className="hover:text-orange-400 transition"><Facebook size={28} /></a>
+                        <a href="#" className="hover:text-orange-400 transition"><Twitter size={28} /></a>
+                        <a href="#" className="hover:text-orange-400 transition"><Linkedin size={28} /></a>
+                        <a href="https://www.instagram.com/themsukfunds/" className="hover:text-orange-400 transition"><Instagram size={28} /></a>
                     </div>
                 </div>
             </div>
-            <div className='flex w-full items-center justify-center text-white text-xs mt-16 pt-2 border-t border-[#444]'>
+
+            {/* Copyright */}
+            <div className="mt-12 pt-4 border-t border-gray-600 text-center text-xs">
                 <p>© 2025 Real Estate Investments. All rights reserved.</p>
             </div>
         </footer>
-    )
-}
+    );
+};
 
-export default Footer
+export default Footer;

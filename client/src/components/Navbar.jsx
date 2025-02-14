@@ -131,7 +131,7 @@ const Navbar = () => {
                             <Link key={item.path} to={item.path} onClick={() => setShowMenu(false)} className="relative group cursor-pointer">
                                 {item.label}
                                 <span className={`absolute bottom-0 left-0 w-0 h-0.5 bg-amber-500 transition-all duration-300 group-hover:w-full ${location.pathname === item.path ? 'w-full' : ''}`} />
-                            </Link>
+                            </Link>   
                         ))}
                     </div>
                 </div>

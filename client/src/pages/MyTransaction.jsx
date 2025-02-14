@@ -6,7 +6,7 @@ import UserCard from "../components/UserCard";
 import { transContext } from "../context/transContext";
 
 const MyTransaction = ({ token }) => {
-  const { navigate } = useContext(transContext)
+  const { navigate } = useContext(transContext);
   const [list, setList] = useState([]);
   const [currentToken, setCurrentToken] = useState(
     token || localStorage.getItem("token")
@@ -19,7 +19,6 @@ const MyTransaction = ({ token }) => {
 
   const fetchList = async () => {
     setLoading(true);
-    ``;
     try {
       if (!currentToken) return;
 
@@ -51,75 +50,66 @@ const MyTransaction = ({ token }) => {
   }, [currentToken]);
 
   return (
-    <div className="min-h-screen mt-16 px-5 md:px-10 bg-gradient-to-tr from-white via-gray-100 to-gray-300">
+    <div className="min-h-screen mt-16 px-3 md:px-10 bg-gradient-to-tr from-white via-gray-100 to-gray-300">
       <UserCard />
-      <div className="flex items-center justify-center gap-5">
-        <button onClick={() => navigate('/contact')} className="w-32 md:w-40 py-3 mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm md:text-base cursor-pointer">Request Deposit</button>
-        <button onClick={() => navigate('/contact')} className="w-32 md:w-40 py-3 mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm md:text-base cursor-pointer">Request Withdrawal</button>
+      <div className="flex flex-col md:flex-row items-center justify-center gap-3 md:gap-5">
+        <button
+          onClick={() => navigate("/contact")}
+          className="w-full md:w-40 py-2 md:py-3 mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm md:text-base cursor-pointer"
+        >
+          Request Deposit
+        </button>
+        <button
+          onClick={() => navigate("/contact")}
+          className="w-full md:w-40 py-2 md:py-3 mt-4 bg-yellow-500 hover:bg-yellow-600 text-white text-sm md:text-base cursor-pointer"
+        >
+          Request Withdrawal
+        </button>
       </div>
-      <p className=" my-5 text-[#00b4d8] text-3xl text-center font-bold">
+
+      <p className="my-5 text-[#00b4d8] text-xl md:text-3xl text-center font-bold">
         Your Transaction History
       </p>
-      <div className="flex flex-col gap-2">
-        <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_1fr] items-center py-1 px-5 border bg-[#00b4d8]/30 text-gray-700 rounded-full text-xs md:text-base font-medium">
-          <b>Description</b>
-          <b>Withdrawl</b>
-          <b>Deposit</b>
-          <b>Profit</b>
-          <b>Loss</b>
-          <b>Total</b>
-          <b>Date & Time</b>
-        </div>
 
-        {loading &&
-          Array.from({ length: 10 }).map((_, index) => (
-            <div className="block" key={index}>
-              <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_1fr] items-center gap-4 py-1 md:p-2 px-5 border border-gray-300 rounded-full text-xl animate-pulse">
-                <div className="h-[8px] md:h-4 bg-gray-300 rounded col-span-1"></div>
-                <div className="h-[8px] md:h-4 bg-gray-300 rounded col-span-1"></div>
-                <div className="h-[8px] md:h-4 bg-gray-300 rounded col-span-1"></div>
-                <div className="h-[8px] md:h-4 bg-gray-300 rounded col-span-1"></div>
-                <div className="h-[8px] md:h-4 bg-gray-300 rounded col-span-1"></div>
-                <div className="h-[8px] md:h-4 bg-gray-300 rounded col-span-1"></div>
-                <div className="h-[8px] md:h-4 bg-gray-300 rounded col-span-1"></div>
-              </div>
-            </div>
-          ))}
-
-        {!loading &&
-          list.map((item, index) => (
-            <div key={index} className="block">
-              <div className="grid grid-cols-[1fr_1fr_1fr_1fr_1fr_1fr_1fr] items-center py-1 px-5 rounded-full border border-gray-300 text-[8px] md:text-sm">
-                <p className="text-gray-700">
-                  {item.description}
-                </p>
-                <p className="text-gray-700">
-                  {currency}
-                  {item.withdrawl}
-                </p>
-                <p className="text-gray-700">
-                  {currency}
-                  {item.deposit}
-                </p>
-                <p className="text-gray-700">
-                  {currency}
-                  {item.profit}
-                </p>
-                <p className="text-gray-700">
-                  {currency}
-                  {item.loss}
-                </p>
-                <p className="text-gray-700">
-                  {currency}
-                  {item.total}
-                </p>
-                <p className="text-gray-700">
-                  {item.createdAt.split("T")[0]} &{" "}
-                  {item.createdAt.split("T")[1].split(".")[0]}
-                </p>
-              </div>
-            </div>
-          ))}
+      {/* Responsive Table */}
+      <div className="overflow-x-auto pb-4">
+        <table className="min-w-full border border-gray-300 bg-white shadow-md rounded-lg">
+          <thead>
+            <tr className="bg-[#00b4d8]/30 text-gray-700 text-xs md:text-sm font-medium">
+              <th className="py-2 px-3 border">Description</th>
+              <th className="py-2 px-3 border">Withdrawl</th>
+              <th className="py-2 px-3 border">Deposit</th>
+              <th className="py-2 px-3 border">Profit</th>
+              <th className="py-2 px-3 border">Loss</th>
+              <th className="py-2 px-3 border">Total</th>
+              <th className="py-2 px-3 border">Date & Time</th>
+            </tr>
+          </thead>
+          <tbody>
+            {!loading && list.length > 0 ? (
+              list.map((item, index) => (
+                <tr key={index} className="text-gray-700 text-xs md:text-sm border-b">
+                  <td className="py-2 px-3 border">{item.description}</td>
+                  <td className="py-2 px-3 border">{currency}{item.withdrawl}</td>
+                  <td className="py-2 px-3 border">{currency}{item.deposit}</td>
+                  <td className="py-2 px-3 border">{currency}{item.profit}</td>
+                  <td className="py-2 px-3 border">{currency}{item.loss}</td>
+                  <td className="py-2 px-3 border">{currency}{item.total}</td>
+                  <td className="py-2 px-3 border text-[10px] md:text-sm">
+                    {item.createdAt.split("T")[0]} <br />
+                    {item.createdAt.split("T")[1].split(".")[0]}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="7" className="text-center py-4 text-gray-500">
+                  {loading ? "Loading transactions..." : "No transactions found"}
+                </td>
+              </tr>
+            )}
+          </tbody>
+        </table>
       </div>
     </div>
   );

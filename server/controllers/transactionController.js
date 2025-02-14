@@ -72,7 +72,7 @@ const removeTransaction = async (req, res) => {
 // function for update transaction
 const updateTransaction = async (req, res) => {
   try {
-    const { id, name, email, description, withdrawl, deposit, profit, loss } =
+    const { id, name, email, description, withdrawl, deposit, profit, loss, total } =
       req.body;
     await transactionModel.findByIdAndUpdate(id, {
       name,
@@ -81,6 +81,8 @@ const updateTransaction = async (req, res) => {
       withdrawl,
       deposit,
       profit,
+      total:
+        Number(deposit) + Number(profit) - Number(withdrawl) - Number(loss),
       loss,
     });
 

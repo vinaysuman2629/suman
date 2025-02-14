@@ -123,7 +123,7 @@ const List = ({ token }) => {
             className="border border-gray-300 p-4 rounded-lg shadow-md bg-white flex flex-col gap-2"
           >
             <p className="font-semibold text-lg">{item.name}</p>
-            <p className="text-gray-600 text-sm">{item.email}</p>
+            <p className="text-gray-600 text-xs md:text-sm">{item.email}</p>
             <p className="text-sm">
               <span className="font-semibold">Description:</span> {item.description}
             </p>
@@ -138,6 +138,9 @@ const List = ({ token }) => {
             </p>
             <p className="text-sm">
               <span className="font-semibold">Loss:</span> {currency}{item.loss}
+            </p>
+            <p className="text-sm">
+              <span className="font-semibold">Total:</span> {currency}{item.total}
             </p>
             <div className="mt-2 flex gap-2">
               <button
